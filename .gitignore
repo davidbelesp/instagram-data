@@ -162,3 +162,5 @@ cython_debug/
 # Custom for this project
 profiledata.db
 lastoutput.html
+node_modules
+.vscode
