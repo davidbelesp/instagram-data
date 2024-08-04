@@ -26,8 +26,10 @@ export class ProfileComponent implements OnInit {
 
   followerChartData: any;
   followingChartData: any;
+  followRatioChartData: any;
   followerChartOptions: any = this.defaultOptions;
   followingChartOptions: any = this.defaultOptions;
+  followRatioChartOptions: any = this.defaultOptions;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,13 +45,17 @@ export class ProfileComponent implements OnInit {
       if(!this.username) this.router.navigate(['/']);
     });
 
-    this.setFollowerChartData();
-
-    this.setFollowingChartData();
+    this.setCharts();
 
     this.dataService.getProfileData(this.username).subscribe(data => {
       console.log(data);
     });
+  }
+
+  setCharts() {
+    this.setFollowerChartData();
+    this.setFollowingChartData();
+    this.setRatioChartData();
   }
 
   setFollowerChartData() {
@@ -77,6 +83,23 @@ export class ProfileComponent implements OnInit {
           {
             label: 'Following',
             data: res.map(d => d.following_count),
+            fill: false,
+            borderColor: '#4bc0c0'
+          }
+        ]
+      };
+    });
+
+  }
+
+  setRatioChartData() {
+    this.dataService.getFollowerRatioHistory(this.username).subscribe(res => {
+      this.followRatioChartData = {
+        labels: res.map(d => new Date(d.timestamp).toLocaleDateString()),
+        datasets: [
+          {
+            label: 'Follower Ratio',
+            data: res.map(d => d.follower_ratio),
             fill: false,
             borderColor: '#4bc0c0'
           }

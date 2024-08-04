@@ -53,6 +53,16 @@ app.get('/data/:username/following', (req, res) => {
     });
 });
 
+app.get('/data/:username/follower-ratio', (req, res) => {
+    const sql = 'SELECT follower_ratio, timestamp FROM profiles WHERE username = ? ORDER BY timestamp ASC';
+    db.all(sql, [req.params.username], (err, row) => {
+        if (err) {
+            throw err;
+        }
+        res.send(row);
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

@@ -27,5 +27,9 @@ export class DataService {
   getFollowingHistory(username: string) : Observable<Profile[]> {
     return this.http.get<Profile[]>(this.apiUrl + username + '/following/' );
   }
+
+  getFollowerRatioHistory(username: string) : Observable<Profile[]> {
+    return this.http.get<Profile[]>(this.apiUrl + username + '/follower-ratio/' );
+  }
   
 }
