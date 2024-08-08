@@ -94,7 +94,7 @@ def get_and_save_data():
         metadata = soup.find_all('meta') #TODO: get profile image url & bio
 
         post_count = list_items[0].find('span', class_='html-span').get_text()
-        followers_count = list_items[1].find('span', class_='_ac2a')['title'].replace(',', '').replace('.', '')
+        followers_count = list_items[1].find('span', class_='x5n08af x1s688f')['title'].replace(',', '').replace('.', '')
         following_count = list_items[2].find('span', class_='html-span').get_text()
 
         profile = Profile(USERNAME, post_count, followers_count, following_count, None, get_current_date())

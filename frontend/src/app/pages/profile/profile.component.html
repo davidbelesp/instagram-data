@@ -1,7 +1,23 @@
-<div class="content">
-    <div class="follows-box">
-        <p-chart class="chart" type="line" [data]="followerChartData" [options]="followerChartOptions" />
-        <p-chart class="chart" type="line" [data]="followingChartData" [options]="followingChartOptions" />
-        <p-chart class="chart" type="line" [data]="followRatioChartData" [options]="followRatioChartOptions" />
+<div class="content profile-page">
+    <div class="profile-page">
+        <div class="username-title">
+            <h1>{{ username }}</h1>
+        </div>
+        <div class="follows-box">
+            
+            <canvas class=""></canvas>
+            <!-- <div class="chart-box">
+                <p-chart class="chart" type="line" [data]="followerChartData" [options]="followerChartOptions" />
+            </div>
+            <div class="chart-box">
+                <p-chart class="chart" type="line" [data]="followingChartData" [options]="followingChartOptions" />
+            </div>
+            <div class="chart-box">
+                <p-chart class="chart" type="line" [data]="followRatioChartData" [options]="followRatioChartOptions" />
+            </div> -->
+        </div>
     </div>
 </div>
+<script>
+    const myChart = new Chart
+</script>
