@@ -24,7 +24,7 @@ app.get('/data', (req, res) => {
 });
 
 app.get('/data/:username', (req, res) => {
-    const sql = 'SELECT * FROM profiles WHERE username = ?';
+    const sql = 'SELECT * FROM profiles WHERE username = ? ORDER BY timestamp ASC';
     db.all(sql, [req.params.username], (err, row) => {
         if (err) {
             throw err;
